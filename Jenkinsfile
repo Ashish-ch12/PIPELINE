@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	
 	parameters {
-		choice(name: 'ENVIRONMENT', choices: ['QA','UAT'], description: 'Pick Environment value')
+		choice(name: 'ENV', choices: ['QA','UAT'], description: 'Pick Environment value')
 	}
 	stages {
 	    stage('Checkout') {
@@ -11,8 +11,7 @@ pipeline {
 		      }}
 		stage('Build') {
 	           steps {
-			  sh '/home/ashish/Documents/mavenfile/apache-maven-3.9.6
-/bin/mvn install'
+			  sh '/home/ashish/Documents/mavenfile/apache-maven-3.9.6/bin/mvn install'
 	                 }}
 		stage('Deployment'){
 		    steps {
@@ -25,7 +24,7 @@ pipeline {
     		sh 'cp target/PIPELINE.war /home/ashish/Documents/mavenfile/apache-tomcat-9.0.88/webapps'
     		echo "deployment has been done on UAT!"
 			}
-			echo "deployment has been done!"
+			
 			
 			
 			}}}	
